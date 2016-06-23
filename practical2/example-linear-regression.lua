@@ -168,8 +168,8 @@ end
 --   + a learning rate decay, to let the algorithm converge more precisely
 
 sgd_params = {
-   learningRate = 1e-3,
-   learningRateDecay = 1e-4,
+   learningRate = 2e-3,
+   learningRateDecay = 2e-4,
    weightDecay = 0,
    momentum = 0
 }
@@ -208,7 +208,7 @@ for i = 1,1e4 do
 
    -- report average error on epoch
    current_loss = current_loss / (#data)[1]
-   print('current loss = ' .. current_loss)
+   --print('current loss = ' .. current_loss)
 
 end
 
@@ -242,9 +242,12 @@ dataTest = torch.Tensor{
     {14, 8}
 }
 
-for i = 1, (#dataTest)[1] do
-    print("%2d %6.2f", i, model:forward(dataTest[i][{{2,3}}])[1])
+print("dataTest")
+for i = 1,(#dataTest)[1] do
+   local myPrediction = model:forward(dataTest[i])
+   print(string.format("%2d  %6.2f ", i, myPrediction[1]))
 end
+
 
 
 
