@@ -180,7 +180,8 @@ sgd_params = {
 -- but should typically be determinined using cross-validation.
 
 -- we cycle 1e4 times over our training data
-for i = 1,1e4 do
+function iterr (num_epochs)
+for i = 1,num_epochs do
 
    -- this variable is used to estimate the average loss
    current_loss = 0
@@ -249,6 +250,11 @@ for i = 1,(#dataTest)[1] do
 end
 
 
+end
 
+for num_epochs in [1e3,1e4,1e5] do
+    print(string.format("number of epochs %5d", num_epochs))
+    iterr(num_epochs)
+end
 
 
