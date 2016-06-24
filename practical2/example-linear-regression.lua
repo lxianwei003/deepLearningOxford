@@ -248,13 +248,26 @@ for i = 1,(#dataTest)[1] do
    local myPrediction = model:forward(dataTest[i])
    print(string.format("%2d  %6.2f ", i, myPrediction[1]))
 end
-
+print('parameter in the network')
+print(x)
 
 end
-
-for num_epochs in [1e3,1e4,1e5] do
+for ind, num_epochs in ipairs({1e3,1e4,1e5}) do
     print(string.format("number of epochs %5d", num_epochs))
     iterr(num_epochs)
 end
+
+t1 = data[{{},{2,3}}]:clone()
+bias = torch.ones(data:size()[1])
+X = torch.cat(t1, bias)
+y = data[{{}, {1}}]
+
+
+theta = torch.inverse(X:t() * X) * X:t() * y 
+print('theta')
+print(theta)
+prediction = torch.cat(dataTest, torch.ones(dataTest:size()[1])) * theta
+print("Least Square Prediction")
+print(prediction)
 
 
