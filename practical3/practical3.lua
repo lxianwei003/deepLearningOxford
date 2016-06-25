@@ -208,6 +208,7 @@ for i = 1, iterations do
   -- is the same as torch.linspace(1, #losses, #losses).
 
   losses[#losses + 1] = minibatch_loss[1] -- append the new loss
+  print('LOSS', losses)
 end
 
 -- TODO: for the first handin item, evaluate test loss above, and add to the plot below
