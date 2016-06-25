@@ -31,7 +31,9 @@ end
 
 -- where to start the algorithm (usually random, but here we won't since it's a demo)
 -- NOTE: try a few starting points, using the plot for pointers
-local x = torch.Tensor{5}
+local x = torch.Tensor{1}
+print('x')
+print(x)
 
 -- optim functions use this table for bookkeeping and for reading options
 local state = { learningRate = 1e-2 }
