@@ -6,6 +6,7 @@ function ReQU:updateOutput(input)
   -- TODO
   self.output:resizeAs(input):copy(input)
   -- ...something here...
+  self.output:apply(function(x) if (x>0) then x = x^2 else x = 0 end; return x end)
   return self.output
 end
 
