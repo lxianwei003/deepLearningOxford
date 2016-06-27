@@ -19,7 +19,7 @@ local function checkgrad(f, g, x, eps)
     x[i] = x[i] + eps
     local ff = f(x)
     x[i]  = x[i] - 2 * eps
-    grad_est[i] = ff - f(x) / 2 /eps
+    grad_est[i] = (ff - f(x)) / 2 /eps
     x[i] = x[i] + eps
   end
 

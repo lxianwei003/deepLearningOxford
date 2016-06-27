@@ -12,7 +12,7 @@ end
 function ReQU:updateGradInput(input, gradOutput)
   self.gradInput = torch.Tensor()
   self.gradInput:resizeAs(input):copy(input)
-  self.gradInput:cmul(torch.gt(input, 0):double()):cmul(input):mul(2)
+  self.gradInput:cmul(torch.gt(input, 0):double()):cmul(gradOutput):mul(2)
   return self.gradInput
 end
 
